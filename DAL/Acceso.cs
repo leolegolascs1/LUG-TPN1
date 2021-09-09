@@ -9,7 +9,7 @@ namespace DAL
 {
     public class Acceso
     {
-        private SqlConnection oConn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=BDDematazo;Integrated Security=True");
+        private SqlConnection oConn = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=DBDematazo;Integrated Security=True");
         SqlCommand cmd;
 
         // creo una funcion para saber el estado de la conexion

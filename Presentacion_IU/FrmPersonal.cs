@@ -33,7 +33,7 @@ namespace Presentacion_IU
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Test _negocioT = new Test();
+           Test _negocioT = new Test();
            MessageBox.Show ( _negocioT.TestConection());
         }
         private void CargaCombo() 
@@ -97,11 +97,24 @@ namespace Presentacion_IU
         }
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            CreoTipoEmpleado();
-            LLenarObjeto();
-            oBLLPersonal.Guardar(oPersonal);
-            LimpiarCampos();
-            MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodoTable());
+            if(dtgPersonal.SelectedRows.Count > 0)
+            {
+                CreoTipoEmpleado();
+                LLenarObjeto();
+
+                if (oBLLPersonal.Guardar(oPersonal))
+                {
+                    MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                }
+                LimpiarCampos();
+                MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodoTable());
+            }
+            else
+            {
+                MessageBox.Show("Por Favor seleccione un personal a modificar", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+           
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {

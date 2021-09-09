@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MPP_ConsultarStock.cs" />
+    <Compile Include="MPP_Proveedor.cs" />
     <Compile Include="MPP_Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TEST.cs" />
