@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE_DetalleCompra.cs" />
     <Compile Include="BE_Materiales.cs" />
+    <Compile Include="BE_OrdenCompra.cs" />
     <Compile Include="BE_Personal.cs" />
     <Compile Include="BE_PersonalAdministrador.cs" />
     <Compile Include="BE_PersonalFabrica.cs" />

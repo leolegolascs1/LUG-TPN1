@@ -33,14 +33,12 @@ namespace MPP
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
         }
-
         public BE_Personal ListarObjeto(BE_Personal Objeto)
         {
             throw new NotImplementedException();
         }
         private BE_Personal CargarDatos(BE_Personal  oBEPersonal, DataRow fila) 
         {
-
             //  oBEPersonal.Codigo  =int.Parse (fila["NroPersonal"].ToString());
             oBEPersonal.Nombre = fila["Nombre"].ToString();
             oBEPersonal.Apellido = fila["Apellido"].ToString();
@@ -64,7 +62,6 @@ namespace MPP
                 {
                     string tipoPersonal = fila["Tipo_Personal"].ToString();
                     BE_Personal oPersonal;
-
                     if (tipoPersonal == "Mostrador")
                     {
                         oPersonal = new BE_PersonalMostrador();
@@ -80,7 +77,6 @@ namespace MPP
                     {
                         oPersonal = new BE_PersonalAdministrador();
                         ListaPersonal.Add(CargarDatos(oPersonal, fila));
-
                     }
                     else
                     {

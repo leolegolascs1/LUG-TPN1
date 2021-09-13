@@ -10,8 +10,7 @@ namespace Abstraccion
     {
         bool Guardar(T Objeto);
         bool Baja(T Objeto);
-        List<T> ListarTodo();
-
+        List<T> ListarTodo(); 
         DataTable ListarTodoTable();
         T ListarObjeto(T Objeto);
     }

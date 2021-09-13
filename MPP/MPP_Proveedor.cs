@@ -33,7 +33,6 @@ namespace MPP
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
         }
-
         public BE_Proveedor ListarObjeto(BE_Proveedor Objeto)
         {
             throw new NotImplementedException();
@@ -77,7 +76,6 @@ namespace MPP
             }
             return ListaPersonal;
         }
-
         public DataTable ListarTodoTable()
         //Metodo hace consulta y devuelve un datatable con la informacion.
         {

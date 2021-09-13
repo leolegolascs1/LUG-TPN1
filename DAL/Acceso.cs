@@ -30,7 +30,6 @@ namespace DAL
         }
         public bool Escribir(string Consulta_SQL)
         {
-
             oConn.Open();
             cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
@@ -45,7 +44,6 @@ namespace DAL
             {
                 throw ex;
             }
-
             finally
             { oConn.Close(); }
         }
@@ -78,7 +76,6 @@ namespace DAL
                 SqlDataAdapter Da = new SqlDataAdapter(consulta, oConn);
                 //lleno la tabla con el metodo fill
                 Da.Fill(tabla);
-
             }
             catch (SqlException ex)
             { throw ex; }

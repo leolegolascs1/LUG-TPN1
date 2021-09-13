@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmArticuloMateriaPrima.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArticuloMateriaPrima.Designer.cs">
+      <DependentUpon>FrmArticuloMateriaPrima.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmConsultarStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,8 +84,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmArticuloMateriaPrima.resx">
+      <DependentUpon>FrmArticuloMateriaPrima.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultarStock.resx">
       <DependentUpon>FrmConsultarStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGenerarOrdenCompra.resx">
+      <DependentUpon>FrmGenerarOrdenCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPersonal.resx">
       <DependentUpon>FrmPersonal.cs</DependentUpon>

@@ -16,5 +16,10 @@ namespace Presentacion_IU
         {
             InitializeComponent();
         }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

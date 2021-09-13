@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MPP_ConsultarStock.cs" />
+    <Compile Include="MPP_Material.cs" />
+    <Compile Include="MPP_OrdenCompra.cs" />
     <Compile Include="MPP_Proveedor.cs" />
     <Compile Include="MPP_Personal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
