@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MPP", "MPP\MPP.csproj", "{3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstraccion", "Abstraccion\Abstraccion.csproj", "{F2C4250C-5CAA-4009-B89D-0110FE97708F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguridad", "Seguridad\Seguridad.csproj", "{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F2C4250C-5CAA-4009-B89D-0110FE97708F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2C4250C-5CAA-4009-B89D-0110FE97708F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2C4250C-5CAA-4009-B89D-0110FE97708F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

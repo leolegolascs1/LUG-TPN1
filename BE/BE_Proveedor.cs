@@ -9,6 +9,7 @@ namespace BE
 {
     public class BE_Proveedor:IEntidad
     {
+        #region Atributos
         private int _codigo;
         private string _nombre;
         private string _apellido;
@@ -20,6 +21,8 @@ namespace BE
         private string _localidad;
         private string _direccion;
 
+        #endregion
+        #region Propiedades
         public int Codigo { get => _codigo; set => _codigo = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
         public string Apellido { get => _apellido; set => _apellido = value; }
@@ -30,5 +33,8 @@ namespace BE
         public string Telefono { get => _telefono; set => _telefono = value; }
         public string Localidad { get => _localidad; set => _localidad = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
+        #endregion
+
+
     }
 }

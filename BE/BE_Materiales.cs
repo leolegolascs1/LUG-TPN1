@@ -9,12 +9,19 @@ namespace BE
 {
     public class BE_Materiales:IEntidad
     {
+
+        #region Atributos
         private int _codigo;
         private string _descripcion_material;
         private string _material;
-
+        #endregion
+        #region Propiedades
         public int Codigo { get => _codigo; set => _codigo = value; }
         public string Descripcion_material { get => _descripcion_material; set => _descripcion_material = value; }
         public string Material { get => _material; set => _material = value; }
+        #endregion
+
+
+
     }
 }

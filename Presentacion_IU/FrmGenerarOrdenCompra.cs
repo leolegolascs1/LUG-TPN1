@@ -13,55 +13,55 @@ namespace Presentacion_IU
 {
     public partial class FrmGenerarOrdenCompra : Form
     {
+        BLL_Personal oBLLPersonal;
         BLL_OrdenCompra oBLLOrdenCompra;
+        BLL_Proveedor oBLLProveedor;
+        BLL_Material oBLLMaterial;
+
         BE_OrdenCompra oBEOrdenCompra;
         BE_DetalleCompra oBEDetalleCompra;
-
-
-        List<BE_Proveedor> _lstProveedores;
-        List<BE_Personal> _lstPersonal;
-        List<BE_Materiales> _lstMateriales;
 
         public FrmGenerarOrdenCompra()
         {
             InitializeComponent();
-            _lstProveedores = new List<BE_Proveedor>();
-            _lstPersonal = new List<BE_Personal>();
-            _lstMateriales = new List<BE_Materiales>();
-
             oBLLOrdenCompra = new BLL_OrdenCompra();
+            oBLLPersonal = new BLL_Personal();
+            oBLLProveedor = new BLL_Proveedor();
+            oBLLMaterial = new BLL_Material();
+
             oBEOrdenCompra = new BE_OrdenCompra();
             oBEDetalleCompra = new BE_DetalleCompra();
         }
         private void FrmGenerarOrdenCompra_Load(object sender, EventArgs e)
         {
-            _lstProveedores = oBLLOrdenCompra.ListarTodoProveedor(); //Lleno lista de proveedores
-            _lstPersonal = oBLLOrdenCompra.ListarTodoPersonal(); //lleno lista personal
-            _lstMateriales = oBLLOrdenCompra.ListarTodoMaterial();
-
             CargaCombo();
-            MostrarGrilla(dtgOrdenesCompra, oBLLOrdenCompra.ListarTodoOrdenCompra());
+            MostrarGrilla(dtgOrdenesCompra, oBLLOrdenCompra.ListarTodo());
         }
         private void CargaCombo()
         {
-            cbxProveedor.DataSource = _lstProveedores;
+            cbxProveedor.DataSource = oBLLProveedor.ListarTodo();
             cbxProveedor.DisplayMember = "RazonSocial";
             cbxProveedor.ValueMember = "Codigo";
             cbxProveedor.SelectedItem = null;
 
-            cbxPersonal.DataSource = _lstPersonal;
+            List<BE_Personal> _lstPersonal = new List<BE_Personal>();
+            _lstPersonal = oBLLPersonal.ListarTodo();
+
+            cbxPersonal.DataSource = _lstPersonal.FindAll(x => x.Tipo_Personal == "Fabrica");
             cbxPersonal.DisplayMember = "Nombre";
             cbxPersonal.ValueMember = "Codigo";
             cbxPersonal.SelectedItem = null;
 
-            cbxItems.DataSource = _lstMateriales;
+
+
+
+            cbxItems.DataSource = oBLLMaterial.ListarTodo();
             cbxItems.DisplayMember = "Descripcion_Material";
             cbxItems.ValueMember = "Codigo";
             cbxItems.SelectedItem = null;
         }
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
-
             BE_OrdenCompra _Filaseleccion = dtgOrdenesCompra.CurrentRow.DataBoundItem as BE_OrdenCompra;
             if (_Filaseleccion != null)
             {
@@ -70,10 +70,9 @@ namespace Presentacion_IU
                 oBEDetalleCompra.Descripcion = cbxItems.Text;
                 oBEDetalleCompra.Cantidad = int.Parse(tbxCantidad.Text);
             }
-
             oBLLOrdenCompra.Guardar(oBEDetalleCompra);
             LimpiarCampos();
-
+            MostrarSeleccionOrden();
         }
         private void BtnGenerarOrden_Click(object sender, EventArgs e)
         {
@@ -81,6 +80,7 @@ namespace Presentacion_IU
             oBLLOrdenCompra.Guardar(oBEOrdenCompra);
             LimpiarCampos();
             MostrarGrilla(dtgOrdenesCompra, oBLLOrdenCompra.ListarTodoTable());
+          
         }
         private void LLenarObjeto()
         {
@@ -89,11 +89,12 @@ namespace Presentacion_IU
                 oBEOrdenCompra.Codigo = int.Parse(tbxNroOrden.Text);
             }
             oBEOrdenCompra.Fecha = dtpFechaOrden.Value;
-            BE_Proveedor _AuxProveedor = _lstProveedores.Find(x => x.Codigo == int.Parse(cbxProveedor.SelectedValue.ToString()));
-            oBEOrdenCompra.Proveedor = _AuxProveedor;
 
-            BE_Personal _AuxPersonal = _lstPersonal.Find(x => x.Codigo == int.Parse(cbxPersonal.SelectedValue.ToString()));
-            oBEOrdenCompra.Personal = _AuxPersonal;
+            List<BE_Proveedor> _lstProveedor = oBLLProveedor.ListarTodo();
+            oBEOrdenCompra.Proveedor = _lstProveedor.Find(x => x.Codigo == int.Parse(cbxProveedor.SelectedValue.ToString()));
+
+            List<BE_Personal> _lstPersonal = oBLLPersonal.ListarTodo();
+            oBEOrdenCompra.Personal = _lstPersonal.Find(x => x.Codigo == int.Parse(cbxPersonal.SelectedValue.ToString()));
         }
         private void LimpiarCampos()
         {
@@ -107,19 +108,27 @@ namespace Presentacion_IU
             pGrid.DataSource = null;
             pGrid.DataSource = obj;
         }
-
-        private void DtgOrdenesCompra_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void MostrarSeleccionOrden() 
         {
             LimpiarCampos();
             BE_OrdenCompra _Filaseleccion = dtgOrdenesCompra.CurrentRow.DataBoundItem as BE_OrdenCompra;
             if (_Filaseleccion != null)
             {
                 tbxNroOrden.Text = _Filaseleccion.Codigo.ToString();
+                List<BE_OrdenCompra> _lstOrdenCompra = new List<BE_OrdenCompra>();
+
+                _lstOrdenCompra = oBLLOrdenCompra.ListarTodo();
+                BE_OrdenCompra _aux = _lstOrdenCompra.Find(x => x.Codigo == _Filaseleccion.Codigo);
+                MostrarGrilla(dtgDetalleItems, _aux.LstItems);
             }
             else
             {
                 MessageBox.Show("Por Favor Seleccione una Fila", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+        private void DtgOrdenesCompra_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MostrarSeleccionOrden();
         }
     }
 }

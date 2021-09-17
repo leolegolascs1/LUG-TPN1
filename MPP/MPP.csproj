@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MPP_ConsultarStock.cs" />
     <Compile Include="MPP_Material.cs" />
     <Compile Include="MPP_OrdenCompra.cs" />
     <Compile Include="MPP_Proveedor.cs" />

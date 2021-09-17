@@ -10,11 +10,12 @@ namespace Negocio_BLL
 {
     public class BLL_OrdenCompra
     {
-
         MPP_OrdenCompra oMPPOrdenCompra;
+        MPP_Material oMPPMaterial;
         public BLL_OrdenCompra()
         {
             oMPPOrdenCompra = new MPP_OrdenCompra();
+            oMPPMaterial = new MPP_Material();
         }
         public bool Guardar(BE_OrdenCompra oBEOrdenCompra)
         {
@@ -24,21 +25,9 @@ namespace Negocio_BLL
         {
             return oMPPOrdenCompra.ListarTodoTable();
         }
-        public List<BE_Proveedor> ListarTodoProveedor()
+        public List<BE_OrdenCompra> ListarTodo()
         {
-            return oMPPOrdenCompra.ListarTodoProveedor();
-        }
-        public List<BE_Personal> ListarTodoPersonal()
-        {
-            return oMPPOrdenCompra.ListarTodoPersonal();
-        }
-        public List<BE_Materiales> ListarTodoMaterial()
-        {
-            return oMPPOrdenCompra.ListarTodoMaterial();
-        }
-        public List<BE_OrdenCompra> ListarTodoOrdenCompra()
-        {
-            return oMPPOrdenCompra.ListarTodoOrdenCompra();
+            return oMPPOrdenCompra.ListarTodo();
         }
         public bool Guardar(BE_DetalleCompra oBEDetalleCompra)
         {

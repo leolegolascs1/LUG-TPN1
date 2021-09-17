@@ -37,44 +37,42 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
-        private BE_Proveedor  CargarDatos(BE_Proveedor oBEProveedor, DataRow fila) 
-        {
-            //  oBEPersonal.Codigo  =int.Parse (fila["NroPersonal"].ToString());  Convert.ToInt32(fila["Documento"]);
-            oBEProveedor.Nombre = fila["Nombre"].ToString();
-            oBEProveedor.Apellido = fila["Apellido"].ToString();
-            oBEProveedor.RazonSocial  = fila["RazonSocial"].ToString();
-            oBEProveedor.CUIT   = fila["CUIT"].ToString();
-            oBEProveedor.CUIL  = fila["CUIL"].ToString();
-            oBEProveedor.EMail  = fila["Email"].ToString();
-            oBEProveedor.Telefono  = fila["Telefono"].ToString();
-            oBEProveedor.Localidad   = fila["Localidad"].ToString();
-            oBEProveedor.Direccion  = fila["Direccion"].ToString();
 
-            return oBEProveedor;
-        }
-        public List <BE_Proveedor> ListarTodo()
+        public List<BE_Proveedor> ListarTodo()
         {
-            List<BE_Proveedor> ListaPersonal = new List<BE_Proveedor>();
+            List<BE_Proveedor> Lista = new List<BE_Proveedor>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
-            string Consulta = "Select Alumno.Codigo,Alumno.Nombre,Apellido,Documento,FechaNac,Localidad.Codigo as CodLoc,Localidad.Nombre as Localidad from Alumno, Localidad where Alumno.CodLocalidad = Localidad.Codigo;Select Codigo, nombre from Alumno where Nombre='Juan'";
+            string Consulta = "Select * from TbProveedores";
             oDatos = new Acceso();
             Ds = oDatos.Leer2(Consulta);
-
             //rcorro la tabla dentro del Dataset y la paso a lista
             if (Ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    string tipoPersonal = fila["Tipo_Personal"].ToString();
-                    ListaPersonal.Add(CargarDatos(new BE_Proveedor(), fila));              
+                    BE_Proveedor oBEProveedor;
+                    oBEProveedor = new BE_Proveedor();
+
+                    oBEProveedor.Codigo = int.Parse(fila["NroProveedor"].ToString());
+                    oBEProveedor.Nombre = (fila["Nombre"].ToString());
+                    oBEProveedor.Apellido = (fila["Apellido"].ToString());
+                    oBEProveedor.RazonSocial = (fila["RazonSocial"].ToString());
+                    oBEProveedor.CUIT = (fila["CUIT"].ToString());
+                    oBEProveedor.CUIL = (fila["CUIL"].ToString());
+                    oBEProveedor.Localidad = (fila["Localidad"].ToString());
+                    oBEProveedor.Direccion = (fila["Direccion"].ToString());
+                    oBEProveedor.EMail = (fila["EMail"].ToString());
+                    oBEProveedor.Telefono = (fila["Telefono"].ToString());
+
+                    Lista.Add(oBEProveedor);
                 }
             }
             else
             {
-                ListaPersonal = null;
+                Lista = null;
             }
-            return ListaPersonal;
+            return Lista;
         }
         public DataTable ListarTodoTable()
         //Metodo hace consulta y devuelve un datatable con la informacion.

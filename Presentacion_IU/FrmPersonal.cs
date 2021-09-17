@@ -76,9 +76,6 @@ namespace Presentacion_IU
             oPersonal.Apellido = tbxApellido.Text;
             oPersonal.Nombre  = tbxNombre.Text;
             oPersonal.Documento = int.Parse(tbxDocumento.Text);
-            oPersonal.Tipo_Personal = cbxTipoEmpleado.Text;
-
-       
         }
         private void LimpiarCampos() 
         {
@@ -87,8 +84,6 @@ namespace Presentacion_IU
             tbxNombre.Text = "";
             tbxDocumento.Text = "";
             cbxTipoEmpleado.SelectedItem = null;
-        
-        
         }
         private void MostrarGrilla(DataGridView pGrid, object obj) 
         {

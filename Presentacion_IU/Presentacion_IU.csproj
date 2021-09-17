@@ -52,17 +52,17 @@
     <Compile Include="FrmArticuloMateriaPrima.Designer.cs">
       <DependentUpon>FrmArticuloMateriaPrima.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmConsultarStock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmConsultarStock.Designer.cs">
-      <DependentUpon>FrmConsultarStock.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmGenerarOrdenCompra.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmGenerarOrdenCompra.Designer.cs">
       <DependentUpon>FrmGenerarOrdenCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPersonal.cs">
       <SubType>Form</SubType>
@@ -87,11 +87,11 @@
     <EmbeddedResource Include="FrmArticuloMateriaPrima.resx">
       <DependentUpon>FrmArticuloMateriaPrima.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmConsultarStock.resx">
-      <DependentUpon>FrmConsultarStock.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmGenerarOrdenCompra.resx">
       <DependentUpon>FrmGenerarOrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPersonal.resx">
       <DependentUpon>FrmPersonal.cs</DependentUpon>
@@ -132,6 +132,10 @@
     <ProjectReference Include="..\Negocio_BLL\Negocio_BLL.csproj">
       <Project>{1340da92-6874-406a-a34a-9cf7ec53b216}</Project>
       <Name>Negocio_BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Seguridad\Seguridad.csproj">
+      <Project>{45aa8ce4-d49f-44b1-af9e-40def6a5db9a}</Project>
+      <Name>Seguridad</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

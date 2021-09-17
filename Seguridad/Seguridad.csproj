@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B631C11B-4B37-4AEC-8B5D-781179624838}</ProjectGuid>
+    <ProjectGuid>{45AA8CE4-D49F-44B1-AF9E-40DEF6A5DB9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BE</RootNamespace>
-    <AssemblyName>BE</AssemblyName>
+    <RootNamespace>Seguridad</RootNamespace>
+    <AssemblyName>Seguridad</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,22 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BE_DetalleCompra.cs" />
-    <Compile Include="BE_Login.cs" />
-    <Compile Include="BE_Materiales.cs" />
-    <Compile Include="BE_OrdenCompra.cs" />
-    <Compile Include="BE_Personal.cs" />
-    <Compile Include="BE_PersonalAdministrador.cs" />
-    <Compile Include="BE_PersonalFabrica.cs" />
-    <Compile Include="BE_PersonalMostrador.cs" />
-    <Compile Include="BE_Proveedor.cs" />
+    <Compile Include="Cls_Encriptar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Abstraccion\Abstraccion.csproj">
-      <Project>{f2c4250c-5caa-4009-b89d-0110fe97708f}</Project>
-      <Name>Abstraccion</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

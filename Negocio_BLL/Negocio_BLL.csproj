@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL_ConsultarStock.cs" />
     <Compile Include="BLL_Material.cs" />
     <Compile Include="BLL_OrdenCompra.cs" />
     <Compile Include="BLL_Personal.cs" />

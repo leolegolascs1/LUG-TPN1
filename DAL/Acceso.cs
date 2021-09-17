@@ -30,18 +30,27 @@ namespace DAL
         }
         public bool Escribir(string Consulta_SQL)
         {
-            oConn.Open();
-            cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.Connection = oConn;
-            cmd.CommandText = Consulta_SQL;
+            oConn.Open(); //Abro conexion
+ 
+            cmd = new SqlCommand(); //creo un objeto sqlcommand
+            cmd.CommandType = CommandType.Text; //Le digo que es de tipo texto.
+            cmd.Connection = oConn; // Asigo connexion al cmd.
+
+            SqlTransaction oTrasaccion; //Creo objeto transaccion
+            oTrasaccion = oConn.BeginTransaction(); //Comienzo la tranzaccion en la conexion
+
             try
             {
-                int respuesta = cmd.ExecuteNonQuery();
+                cmd.Transaction = oTrasaccion;   //Asigno la transaccion al cmd.          
+                cmd.CommandText = Consulta_SQL; //Asigno la consulta que viene como parametro
+                int respuesta = cmd.ExecuteNonQuery(); //Ejecuto la consulta.
+                oTrasaccion.Commit(); //Si fue ok realizo el commint de la trasaccion.
+
                 return true;
             }
             catch (SqlException ex)
             {
+                oTrasaccion.Rollback(); //Si hay una excepcion vuelvo todo para atras ya que no ejecuto la transaccion correctamente.
                 throw ex;
             }
             finally

@@ -25,5 +25,9 @@ namespace Negocio_BLL
             return oMPP_Proveedor.ListarTodoTable();
 
         }
+        public List<BE_Proveedor> ListarTodo()
+        {
+            return oMPP_Proveedor.ListarTodo();
+        }
     }
 }

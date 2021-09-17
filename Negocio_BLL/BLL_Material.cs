@@ -23,6 +23,10 @@ namespace Negocio_BLL
         {
             return oMPPMaterial.Guardar(oBEMaterial);
         }
+        public List<BE_Materiales> ListarTodo()
+        {
+            return oMPPMaterial.ListarTodo();
+        }
 
     }
 }

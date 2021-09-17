@@ -23,7 +23,10 @@ namespace Negocio_BLL
         public DataTable ListarTodoTable()
         {
             return oMPPPersonal.ListarTodoTable();
-
+        }
+        public List<BE_Personal> ListarTodo()
+        {
+            return oMPPPersonal.ListarTodo();
         }
     }
 }

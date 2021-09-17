@@ -10,7 +10,7 @@ namespace BE
     {
         public BE_PersonalFabrica()  
        {
-            this.Tipo_Personal = "Empleado Fabrica";   
+            this.Tipo_Personal = "Fabrica";   
        }
     }
 }

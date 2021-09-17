@@ -10,7 +10,7 @@ namespace BE
     {
         public BE_PersonalMostrador()
         {
-            this.Tipo_Personal = "Empleado Mostrador";
+            this.Tipo_Personal = "Mostrador";
         }
     }
 }

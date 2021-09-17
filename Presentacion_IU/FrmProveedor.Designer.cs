@@ -57,24 +57,15 @@
             this.lblLocalidad = new System.Windows.Forms.Label();
             this.lblNroProveedor = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.gbxBusqueda = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.lblListaPersonal = new System.Windows.Forms.Label();
             this.tabProveedor.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbxControles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProveedores)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.gbxBusqueda.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabProveedor
             // 
             this.tabProveedor.Controls.Add(this.tabPage1);
-            this.tabProveedor.Controls.Add(this.tabPage2);
             this.tabProveedor.Location = new System.Drawing.Point(12, 12);
             this.tabProveedor.Name = "tabProveedor";
             this.tabProveedor.SelectedIndex = 0;
@@ -348,73 +339,6 @@
             this.lblApellido.TabIndex = 3;
             this.lblApellido.Text = "Apellido:";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.gbxBusqueda);
-            this.tabPage2.Controls.Add(this.lblListaPersonal);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(574, 507);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Busqueda";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // gbxBusqueda
-            // 
-            this.gbxBusqueda.Controls.Add(this.radioButton3);
-            this.gbxBusqueda.Controls.Add(this.radioButton2);
-            this.gbxBusqueda.Controls.Add(this.radioButton1);
-            this.gbxBusqueda.Location = new System.Drawing.Point(9, 6);
-            this.gbxBusqueda.Name = "gbxBusqueda";
-            this.gbxBusqueda.Size = new System.Drawing.Size(558, 48);
-            this.gbxBusqueda.TabIndex = 2;
-            this.gbxBusqueda.TabStop = false;
-            this.gbxBusqueda.Text = "Buscar Por:";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(249, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(81, 17);
-            this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Por Nombre";
-            this.radioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(145, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(81, 17);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Por Apellido";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(45, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(77, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Por Código";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // lblListaPersonal
-            // 
-            this.lblListaPersonal.AutoSize = true;
-            this.lblListaPersonal.Location = new System.Drawing.Point(6, 57);
-            this.lblListaPersonal.Name = "lblListaPersonal";
-            this.lblListaPersonal.Size = new System.Drawing.Size(76, 13);
-            this.lblListaPersonal.TabIndex = 1;
-            this.lblListaPersonal.Text = "Lista Personal:";
-            // 
             // FrmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,10 +353,6 @@
             this.tabPage1.PerformLayout();
             this.gbxControles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgProveedores)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.gbxBusqueda.ResumeLayout(false);
-            this.gbxBusqueda.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -456,12 +376,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblNroProveedor;
         private System.Windows.Forms.Label lblApellido;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox gbxBusqueda;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label lblListaPersonal;
         private System.Windows.Forms.TextBox tbxDireccion;
         private System.Windows.Forms.TextBox tbxLocalidad;
         private System.Windows.Forms.TextBox tbxRazonSocial;

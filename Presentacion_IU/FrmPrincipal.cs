@@ -17,6 +17,37 @@ namespace Presentacion_IU
             InitializeComponent();
         }
 
+        private void personalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPersonal  oFrmPersonal = new FrmPersonal();
+            oFrmPersonal.MdiParent = this;
+            oFrmPersonal.Show();
+        }
 
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmProveedor ofrmProveedor = new FrmProveedor();
+            ofrmProveedor.MdiParent = this;
+            ofrmProveedor.Show();
+        }
+
+        private void articulosMateriaPrimaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmArticuloMateriaPrima oFrmMateriaPrima = new FrmArticuloMateriaPrima();
+            oFrmMateriaPrima.MdiParent = this;
+            oFrmMateriaPrima.Show();
+        }
+
+        private void ordenDeCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmGenerarOrdenCompra oFrmOrdenCompra = new FrmGenerarOrdenCompra();
+            oFrmOrdenCompra.MdiParent = this;
+            oFrmOrdenCompra.Show();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

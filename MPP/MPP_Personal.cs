@@ -43,6 +43,7 @@ namespace MPP
             oBEPersonal.Nombre = fila["Nombre"].ToString();
             oBEPersonal.Apellido = fila["Apellido"].ToString();
             oBEPersonal.Documento = Convert.ToInt32(fila["Documento"]);
+            oBEPersonal.Password = fila["Password"].ToString();
 
             return oBEPersonal;
         }
@@ -51,7 +52,7 @@ namespace MPP
             List<BE_Personal> ListaPersonal = new List<BE_Personal>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
-            string Consulta = "Select Alumno.Codigo,Alumno.Nombre,Apellido,Documento,FechaNac,Localidad.Codigo as CodLoc,Localidad.Nombre as Localidad from Alumno, Localidad where Alumno.CodLocalidad = Localidad.Codigo;Select Codigo, nombre from Alumno where Nombre='Juan'";
+            string Consulta = "Select * from TbPersonal";
             oDatos = new Acceso();
             Ds = oDatos.Leer2(Consulta);
 
@@ -90,7 +91,6 @@ namespace MPP
             }
             return ListaPersonal;
         }
-
         public DataTable ListarTodoTable()
         //Metodo hace consulta y devuelve un datatable con la informacion.
         {

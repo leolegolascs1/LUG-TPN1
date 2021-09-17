@@ -43,7 +43,32 @@ namespace MPP
 
         public List<BE_Materiales> ListarTodo()
         {
-            throw new NotImplementedException();
+                List<BE_Materiales> Lista = new List<BE_Materiales>();
+                //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
+                DataSet Ds;
+                string Consulta = "Select TbMaterial.Codigo,TbMaterial.Descripcion_Articulo,TbMaterial.Material, TbMaterial.Descripcion_Articulo +'-'+ TbMaterial.Material as MatDesc FROM TbMaterial";
+                oDatos = new Acceso();
+                Ds = oDatos.Leer2(Consulta);
+                //rcorro la tabla dentro del Dataset y la paso a lista
+                if (Ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow fila in Ds.Tables[0].Rows)
+                    {
+                        BE_Materiales oBEMaterial;
+                        oBEMaterial = new BE_Materiales();
+
+                        oBEMaterial.Codigo = int.Parse(fila["Codigo"].ToString());
+                        oBEMaterial.Descripcion_material = (fila["MatDesc"].ToString());
+                        oBEMaterial.Material = (fila["Material"].ToString());
+
+                        Lista.Add(oBEMaterial);
+                    }
+                }
+                else
+                {
+                    Lista = null;
+                }
+                return Lista;           
         }
 
         public DataTable ListarTodoTable()
