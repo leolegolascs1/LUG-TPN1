@@ -41,38 +41,56 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblItems = new System.Windows.Forms.Label();
             this.lblCantidad = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnGenerarOrden = new System.Windows.Forms.Button();
-            this.tbxNroOrden = new System.Windows.Forms.TextBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
+            this.gbxOrdenCompra = new System.Windows.Forms.GroupBox();
             this.lblNroOrden = new System.Windows.Forms.Label();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.tbxNroOrden = new System.Windows.Forms.TextBox();
+            this.btnGenerarOrden = new System.Windows.Forms.Button();
+            this.btnNuevaOrden = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.gbxDetalle = new System.Windows.Forms.GroupBox();
+            this.btnEliminarItem = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblCantidadOrden = new System.Windows.Forms.Label();
+            this.tbxCantidadOrdenes = new System.Windows.Forms.TextBox();
+            this.lblCantidaItems = new System.Windows.Forms.Label();
+            this.tbxCantidadItems = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgOrdenesCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleItems)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.gbxOrdenCompra.SuspendLayout();
+            this.gbxDetalle.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgOrdenesCompra
             // 
+            this.dtgOrdenesCompra.AllowUserToResizeColumns = false;
+            this.dtgOrdenesCompra.AllowUserToResizeRows = false;
             this.dtgOrdenesCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgOrdenesCompra.Location = new System.Drawing.Point(38, 213);
+            this.dtgOrdenesCompra.Location = new System.Drawing.Point(11, 177);
             this.dtgOrdenesCompra.Name = "dtgOrdenesCompra";
+            this.dtgOrdenesCompra.ReadOnly = true;
             this.dtgOrdenesCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgOrdenesCompra.Size = new System.Drawing.Size(677, 92);
+            this.dtgOrdenesCompra.Size = new System.Drawing.Size(684, 92);
             this.dtgOrdenesCompra.TabIndex = 0;
             this.dtgOrdenesCompra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgOrdenesCompra_CellClick);
+            this.dtgOrdenesCompra.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DtgOrdenesCompra_CellDoubleClick);
             // 
             // dtgDetalleItems
             // 
+            this.dtgDetalleItems.AllowUserToResizeColumns = false;
+            this.dtgDetalleItems.AllowUserToResizeRows = false;
             this.dtgDetalleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDetalleItems.Location = new System.Drawing.Point(38, 373);
+            this.dtgDetalleItems.Location = new System.Drawing.Point(11, 56);
             this.dtgDetalleItems.Name = "dtgDetalleItems";
-            this.dtgDetalleItems.Size = new System.Drawing.Size(677, 112);
+            this.dtgDetalleItems.ReadOnly = true;
+            this.dtgDetalleItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgDetalleItems.Size = new System.Drawing.Size(684, 112);
             this.dtgDetalleItems.TabIndex = 0;
             // 
             // dtpFechaOrden
             // 
             this.dtpFechaOrden.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaOrden.Location = new System.Drawing.Point(35, 72);
+            this.dtpFechaOrden.Location = new System.Drawing.Point(132, 100);
             this.dtpFechaOrden.Name = "dtpFechaOrden";
             this.dtpFechaOrden.Size = new System.Drawing.Size(88, 20);
             this.dtpFechaOrden.TabIndex = 1;
@@ -82,7 +100,7 @@
             // 
             this.cbxProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProveedor.FormattingEnabled = true;
-            this.cbxProveedor.Location = new System.Drawing.Point(176, 71);
+            this.cbxProveedor.Location = new System.Drawing.Point(246, 99);
             this.cbxProveedor.Name = "cbxProveedor";
             this.cbxProveedor.Size = new System.Drawing.Size(195, 21);
             this.cbxProveedor.TabIndex = 2;
@@ -91,7 +109,7 @@
             // 
             this.cbxPersonal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPersonal.FormattingEnabled = true;
-            this.cbxPersonal.Location = new System.Drawing.Point(417, 71);
+            this.cbxPersonal.Location = new System.Drawing.Point(469, 99);
             this.cbxPersonal.Name = "cbxPersonal";
             this.cbxPersonal.Size = new System.Drawing.Size(195, 21);
             this.cbxPersonal.TabIndex = 3;
@@ -100,59 +118,65 @@
             // 
             this.cbxItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxItems.FormattingEnabled = true;
-            this.cbxItems.Location = new System.Drawing.Point(39, 346);
+            this.cbxItems.Location = new System.Drawing.Point(15, 29);
             this.cbxItems.Name = "cbxItems";
             this.cbxItems.Size = new System.Drawing.Size(290, 21);
             this.cbxItems.TabIndex = 4;
             // 
             // tbxCantidad
             // 
-            this.tbxCantidad.Location = new System.Drawing.Point(347, 347);
+            this.tbxCantidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tbxCantidad.Location = new System.Drawing.Point(323, 30);
             this.tbxCantidad.Name = "tbxCantidad";
             this.tbxCantidad.Size = new System.Drawing.Size(66, 20);
             this.tbxCantidad.TabIndex = 5;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(431, 344);
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(406, 23);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 31);
             this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // lblFechaOrden
             // 
             this.lblFechaOrden.AutoSize = true;
-            this.lblFechaOrden.Location = new System.Drawing.Point(32, 55);
+            this.lblFechaOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaOrden.Location = new System.Drawing.Point(129, 83);
             this.lblFechaOrden.Name = "lblFechaOrden";
-            this.lblFechaOrden.Size = new System.Drawing.Size(69, 13);
+            this.lblFechaOrden.Size = new System.Drawing.Size(80, 13);
             this.lblFechaOrden.TabIndex = 7;
             this.lblFechaOrden.Text = "Fecha Orden";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 55);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(243, 83);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Proveedor:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(414, 55);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(466, 83);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Personal:";
             // 
             // lblItems
             // 
             this.lblItems.AutoSize = true;
-            this.lblItems.Location = new System.Drawing.Point(36, 330);
+            this.lblItems.Location = new System.Drawing.Point(12, 13);
             this.lblItems.Name = "lblItems";
             this.lblItems.Size = new System.Drawing.Size(75, 13);
             this.lblItems.TabIndex = 7;
@@ -161,34 +185,71 @@
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(344, 331);
+            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(326, 14);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(52, 13);
+            this.lblCantidad.Size = new System.Drawing.Size(61, 13);
             this.lblCantidad.TabIndex = 7;
             this.lblCantidad.Text = "Cantidad:";
             // 
-            // groupBox1
+            // gbxOrdenCompra
             // 
-            this.groupBox1.Controls.Add(this.lblNroOrden);
-            this.groupBox1.Controls.Add(this.btnEliminar);
-            this.groupBox1.Controls.Add(this.tbxNroOrden);
-            this.groupBox1.Controls.Add(this.btnGenerarOrden);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbxPersonal);
-            this.groupBox1.Controls.Add(this.lblFechaOrden);
-            this.groupBox1.Controls.Add(this.cbxProveedor);
-            this.groupBox1.Controls.Add(this.dtpFechaOrden);
-            this.groupBox1.Location = new System.Drawing.Point(38, 53);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(677, 154);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Generar Orden de Compra";
+            this.gbxOrdenCompra.Controls.Add(this.tbxCantidadOrdenes);
+            this.gbxOrdenCompra.Controls.Add(this.lblCantidadOrden);
+            this.gbxOrdenCompra.Controls.Add(this.btnCancelar);
+            this.gbxOrdenCompra.Controls.Add(this.btnNuevaOrden);
+            this.gbxOrdenCompra.Controls.Add(this.dtgOrdenesCompra);
+            this.gbxOrdenCompra.Controls.Add(this.lblNroOrden);
+            this.gbxOrdenCompra.Controls.Add(this.btnEliminar);
+            this.gbxOrdenCompra.Controls.Add(this.tbxNroOrden);
+            this.gbxOrdenCompra.Controls.Add(this.btnGenerarOrden);
+            this.gbxOrdenCompra.Controls.Add(this.label3);
+            this.gbxOrdenCompra.Controls.Add(this.label2);
+            this.gbxOrdenCompra.Controls.Add(this.cbxPersonal);
+            this.gbxOrdenCompra.Controls.Add(this.lblFechaOrden);
+            this.gbxOrdenCompra.Controls.Add(this.cbxProveedor);
+            this.gbxOrdenCompra.Controls.Add(this.dtpFechaOrden);
+            this.gbxOrdenCompra.Location = new System.Drawing.Point(25, 35);
+            this.gbxOrdenCompra.Name = "gbxOrdenCompra";
+            this.gbxOrdenCompra.Size = new System.Drawing.Size(707, 315);
+            this.gbxOrdenCompra.TabIndex = 8;
+            this.gbxOrdenCompra.TabStop = false;
+            this.gbxOrdenCompra.Text = "Generar Orden de Compra";
+            // 
+            // lblNroOrden
+            // 
+            this.lblNroOrden.AutoSize = true;
+            this.lblNroOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroOrden.Location = new System.Drawing.Point(38, 75);
+            this.lblNroOrden.Name = "lblNroOrden";
+            this.lblNroOrden.Size = new System.Drawing.Size(65, 13);
+            this.lblNroOrden.TabIndex = 11;
+            this.lblNroOrden.Text = "Nro.Orden";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(316, 286);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            // 
+            // tbxNroOrden
+            // 
+            this.tbxNroOrden.BackColor = System.Drawing.Color.Yellow;
+            this.tbxNroOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNroOrden.Location = new System.Drawing.Point(34, 91);
+            this.tbxNroOrden.Name = "tbxNroOrden";
+            this.tbxNroOrden.ReadOnly = true;
+            this.tbxNroOrden.Size = new System.Drawing.Size(66, 29);
+            this.tbxNroOrden.TabIndex = 9;
+            this.tbxNroOrden.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnGenerarOrden
             // 
-            this.btnGenerarOrden.Location = new System.Drawing.Point(245, 118);
+            this.btnGenerarOrden.Location = new System.Drawing.Point(209, 148);
             this.btnGenerarOrden.Name = "btnGenerarOrden";
             this.btnGenerarOrden.Size = new System.Drawing.Size(130, 23);
             this.btnGenerarOrden.TabIndex = 8;
@@ -196,52 +257,121 @@
             this.btnGenerarOrden.UseVisualStyleBackColor = true;
             this.btnGenerarOrden.Click += new System.EventHandler(this.BtnGenerarOrden_Click);
             // 
-            // tbxNroOrden
+            // btnNuevaOrden
             // 
-            this.tbxNroOrden.Location = new System.Drawing.Point(296, 28);
-            this.tbxNroOrden.Name = "tbxNroOrden";
-            this.tbxNroOrden.ReadOnly = true;
-            this.tbxNroOrden.Size = new System.Drawing.Size(66, 20);
-            this.tbxNroOrden.TabIndex = 9;
+            this.btnNuevaOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnNuevaOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevaOrden.Location = new System.Drawing.Point(284, 19);
+            this.btnNuevaOrden.Name = "btnNuevaOrden";
+            this.btnNuevaOrden.Size = new System.Drawing.Size(138, 38);
+            this.btnNuevaOrden.TabIndex = 12;
+            this.btnNuevaOrden.Text = "Nueva Orden";
+            this.btnNuevaOrden.UseVisualStyleBackColor = false;
+            this.btnNuevaOrden.Click += new System.EventHandler(this.BtnNuevaOrden_Click);
             // 
-            // btnEliminar
+            // btnCancelar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(381, 118);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 10;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(368, 148);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(129, 23);
+            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
-            // lblNroOrden
+            // gbxDetalle
             // 
-            this.lblNroOrden.AutoSize = true;
-            this.lblNroOrden.Location = new System.Drawing.Point(300, 12);
-            this.lblNroOrden.Name = "lblNroOrden";
-            this.lblNroOrden.Size = new System.Drawing.Size(56, 13);
-            this.lblNroOrden.TabIndex = 11;
-            this.lblNroOrden.Text = "Nro.Orden";
+            this.gbxDetalle.Controls.Add(this.tbxCantidadItems);
+            this.gbxDetalle.Controls.Add(this.lblCantidaItems);
+            this.gbxDetalle.Controls.Add(this.btnEliminarItem);
+            this.gbxDetalle.Controls.Add(this.lblCantidad);
+            this.gbxDetalle.Controls.Add(this.lblItems);
+            this.gbxDetalle.Controls.Add(this.btnAgregar);
+            this.gbxDetalle.Controls.Add(this.tbxCantidad);
+            this.gbxDetalle.Controls.Add(this.cbxItems);
+            this.gbxDetalle.Controls.Add(this.dtgDetalleItems);
+            this.gbxDetalle.Location = new System.Drawing.Point(25, 356);
+            this.gbxDetalle.Name = "gbxDetalle";
+            this.gbxDetalle.Size = new System.Drawing.Size(707, 212);
+            this.gbxDetalle.TabIndex = 9;
+            this.gbxDetalle.TabStop = false;
+            this.gbxDetalle.Text = "Detalle Orden";
+            // 
+            // btnEliminarItem
+            // 
+            this.btnEliminarItem.Location = new System.Drawing.Point(314, 174);
+            this.btnEliminarItem.Name = "btnEliminarItem";
+            this.btnEliminarItem.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarItem.TabIndex = 8;
+            this.btnEliminarItem.Text = "Eliminar";
+            this.btnEliminarItem.UseVisualStyleBackColor = true;
+            this.btnEliminarItem.Click += new System.EventHandler(this.BtnEliminarItem_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(220, 13);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(317, 24);
+            this.lblTitulo.TabIndex = 10;
+            this.lblTitulo.Text = "GENERAR ORDEN DE COMPRA";
+            // 
+            // lblCantidadOrden
+            // 
+            this.lblCantidadOrden.AutoSize = true;
+            this.lblCantidadOrden.Location = new System.Drawing.Point(528, 289);
+            this.lblCantidadOrden.Name = "lblCantidadOrden";
+            this.lblCantidadOrden.Size = new System.Drawing.Size(75, 13);
+            this.lblCantidadOrden.TabIndex = 14;
+            this.lblCantidadOrden.Text = "Cant.Ordenes:";
+            // 
+            // tbxCantidadOrdenes
+            // 
+            this.tbxCantidadOrdenes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCantidadOrdenes.Location = new System.Drawing.Point(609, 286);
+            this.tbxCantidadOrdenes.Name = "tbxCantidadOrdenes";
+            this.tbxCantidadOrdenes.ReadOnly = true;
+            this.tbxCantidadOrdenes.Size = new System.Drawing.Size(86, 20);
+            this.tbxCantidadOrdenes.TabIndex = 15;
+            this.tbxCantidadOrdenes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblCantidaItems
+            // 
+            this.lblCantidaItems.AutoSize = true;
+            this.lblCantidaItems.Location = new System.Drawing.Point(528, 188);
+            this.lblCantidaItems.Name = "lblCantidaItems";
+            this.lblCantidaItems.Size = new System.Drawing.Size(80, 13);
+            this.lblCantidaItems.TabIndex = 14;
+            this.lblCantidaItems.Text = "Cantidad Items:";
+            // 
+            // tbxCantidadItems
+            // 
+            this.tbxCantidadItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCantidadItems.Location = new System.Drawing.Point(609, 185);
+            this.tbxCantidadItems.Name = "tbxCantidadItems";
+            this.tbxCantidadItems.ReadOnly = true;
+            this.tbxCantidadItems.Size = new System.Drawing.Size(86, 20);
+            this.tbxCantidadItems.TabIndex = 15;
+            this.tbxCantidadItems.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FrmGenerarOrdenCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 557);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblCantidad);
-            this.Controls.Add(this.lblItems);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.tbxCantidad);
-            this.Controls.Add(this.cbxItems);
-            this.Controls.Add(this.dtgDetalleItems);
-            this.Controls.Add(this.dtgOrdenesCompra);
+            this.ClientSize = new System.Drawing.Size(756, 574);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.gbxDetalle);
+            this.Controls.Add(this.gbxOrdenCompra);
             this.Name = "FrmGenerarOrdenCompra";
             this.Text = "FrmGenerarOrdenCompra";
             this.Load += new System.EventHandler(this.FrmGenerarOrdenCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgOrdenesCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleItems)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gbxOrdenCompra.ResumeLayout(false);
+            this.gbxOrdenCompra.PerformLayout();
+            this.gbxDetalle.ResumeLayout(false);
+            this.gbxDetalle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,10 +392,19 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblItems;
         private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbxOrdenCompra;
         private System.Windows.Forms.Button btnGenerarOrden;
         private System.Windows.Forms.Label lblNroOrden;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.TextBox tbxNroOrden;
+        private System.Windows.Forms.Button btnNuevaOrden;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.GroupBox gbxDetalle;
+        private System.Windows.Forms.Button btnEliminarItem;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.TextBox tbxCantidadOrdenes;
+        private System.Windows.Forms.Label lblCantidadOrden;
+        private System.Windows.Forms.TextBox tbxCantidadItems;
+        private System.Windows.Forms.Label lblCantidaItems;
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio_BLL;
 using BE;
-
+using Microsoft.VisualBasic;
 namespace Presentacion_IU
 {
  
@@ -134,8 +134,23 @@ namespace Presentacion_IU
             else
             {
                 MessageBox.Show("Por Favor Seleccione una Fila", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }         
+        }
+        private void BtnGenerarPass_Click(object sender, EventArgs e)
+        {
+            using (FrmPassword oFrmPassword = new FrmPassword())
+            {           
+                oFrmPassword.CodigoPersonal = int.Parse(tbxNroEmpleado.Text);
+
+                DialogResult dr = oFrmPassword.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+
+
+                  //GUARDAR
+                }
             }
-         
+
         }
     }
 }

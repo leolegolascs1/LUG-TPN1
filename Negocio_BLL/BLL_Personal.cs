@@ -20,6 +20,7 @@ namespace Negocio_BLL
         {
             return oMPPPersonal.Guardar(oBEPersonal);
         }
+
         public DataTable ListarTodoTable()
         {
             return oMPPPersonal.ListarTodoTable();
@@ -28,5 +29,6 @@ namespace Negocio_BLL
         {
             return oMPPPersonal.ListarTodo();
         }
+
     }
 }

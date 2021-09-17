@@ -34,7 +34,11 @@ namespace BE
         public string Localidad { get => _localidad; set => _localidad = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
         #endregion
-
-
+        public override string ToString()
+        {
+            return this.RazonSocial;
+        }
     }
+
+
 }

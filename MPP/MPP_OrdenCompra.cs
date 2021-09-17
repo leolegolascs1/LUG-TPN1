@@ -20,12 +20,13 @@ namespace MPP
             string Consulta_SQL;
             if (POrdenCompra.Codigo != 0) //Si tengo codigo es un updata
             {
-                Consulta_SQL = "Update TbOrdenCompra SET Fecha = '" + POrdenCompra.Fecha.ToString ("MM/dd/yyyy") + "', Proveedor= '" + POrdenCompra.Proveedor  + "', Personal = " + POrdenCompra.Proveedor  + " where NroOrdenCompre=" + POrdenCompra.Codigo + "";
+                Consulta_SQL = "Update TbOrdenCompra SET Fecha = '" + POrdenCompra.Fecha + "',NroProveedor="+ POrdenCompra.NroProveedor +", Proveedor= '" + POrdenCompra.Proveedor.ToString()  + "',NroPersonal="+ POrdenCompra.NroPersonal+", Personal = '" + POrdenCompra.Personal.ToString()  + "' where NroOrdenCompra=" + POrdenCompra.Codigo + "";
                 // string COnsulta_SQL2= string.Format("update Alumno set Nombre = '{0}', Apellido = '{1}', DNI = {2} , FechaNac = '{3}', CodLocalidad = {4} where Codigo = {5}", oAlu.Nombre, oAlu.Apellido,oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo, oAlu.Codigo);
             }
+           // convert(datetime, campo_fecha, 103)
             else //Sino es un insert.
             {
-                Consulta_SQL = "Insert INTO TbOrdenCompra (Fecha,Proveedor,Personal) VALUES ('" + POrdenCompra.Fecha.ToString("MM/dd/yyyy") + "', '" + POrdenCompra.Proveedor.RazonSocial  + "','" + POrdenCompra.Personal.Apellido  + " " +POrdenCompra.Personal.Nombre + "')";
+                Consulta_SQL = "Insert INTO TbOrdenCompra (Fecha,NroProveedor,Proveedor,NroPersonal, Personal) VALUES ('" + POrdenCompra.Fecha + "'," + POrdenCompra.NroProveedor + ",'" + POrdenCompra.Proveedor.ToString()  + "'," + POrdenCompra.NroPersonal  + ",'" + POrdenCompra.Personal.ToString() +"')";
                 //opcion 2
                 // string Consulta_SQL = string.Format("Insert into Alumno(Nombre, Apellido,DNI, FechaNac,CodLocalidad) values ('{0}','{1}',{2},'{3}',{4})", oAlu.Nombre,oAlu.Apellido, oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo);
             }
@@ -158,5 +159,29 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
+        public bool QuitarItem_Orden(BE_OrdenCompra oBEOrden, BE_DetalleCompra oBEDetalle)
+        {
+            string Consulta = " Delete from TbDetalleCompra where NroOrden = " + oBEOrden.Codigo + "  and IdDetalle =" + oBEDetalle.Codigo + "";
+            oDatos = new Acceso();
+            return oDatos.Escribir(Consulta);
+        }
+        public bool EliminarOrden(BE_OrdenCompra oBEOrden)
+        {
+            bool estado = true;
+
+            string Consulta = "Delete from TbOrdenCompra where NroOrdenCompra = " + oBEOrden.Codigo + "";
+            oDatos = new Acceso();
+            estado = oDatos.Escribir(Consulta);
+
+            foreach (BE_DetalleCompra item in oBEOrden.LstItems)
+            {
+                string Consulta2 = "Delete from TbDetalleCompra where IdDetalle = " + item.Codigo + "";
+                estado = oDatos.Escribir(Consulta2);
+            }
+            return estado;
+
+       
+        }
+
     }
 }

@@ -39,7 +39,7 @@ namespace MPP
         }
         private BE_Personal CargarDatos(BE_Personal  oBEPersonal, DataRow fila) 
         {
-            //  oBEPersonal.Codigo  =int.Parse (fila["NroPersonal"].ToString());
+            oBEPersonal.Codigo  =int.Parse(fila["NroPersonal"].ToString());
             oBEPersonal.Nombre = fila["Nombre"].ToString();
             oBEPersonal.Apellido = fila["Apellido"].ToString();
             oBEPersonal.Documento = Convert.ToInt32(fila["Documento"]);
@@ -103,5 +103,7 @@ namespace MPP
             return dt;
 
         }
+ 
+
     }
 }

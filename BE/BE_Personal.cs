@@ -30,6 +30,11 @@ namespace BE
         {
             return this.Nombre +"-" +this.Apellido;
         }
-
+        public BE_Personal() { }
+        public BE_Personal(string pPass, int pNroPersonal)
+        {
+            this.Password = pPass;
+            this.Codigo = pNroPersonal;
+        }
     }
 }

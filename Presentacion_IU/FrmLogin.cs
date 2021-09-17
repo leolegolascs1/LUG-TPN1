@@ -50,7 +50,7 @@ namespace Presentacion_IU
             List<BE_Personal> _lstPersonal = new List<BE_Personal>();
             _lstPersonal = oBLLPersonal.ListarTodo();
 
-            if(_lstPersonal.Exists(x => x.Apellido == oBELogin.Usuario && x.Password == oBELogin.Contrasenia)) 
+            if (_lstPersonal.Exists(x => x.Apellido == oBELogin.Usuario && x.Password == oBELogin.Contrasenia)) 
             {
                 FrmPrincipal oFrmPrincipal = new FrmPrincipal();
                 oFrmPrincipal.Show();

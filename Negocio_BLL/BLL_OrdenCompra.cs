@@ -33,6 +33,15 @@ namespace Negocio_BLL
         {
             return oMPPOrdenCompra.Guardar(oBEDetalleCompra);
         }
+        public bool QuitarQuitarItem_Orden(BE_OrdenCompra oBEOrden, BE_DetalleCompra oBEDetalle)
+        {
+            return oMPPOrdenCompra.QuitarItem_Orden(oBEOrden, oBEDetalle);
+        }
+        public bool EliminarOrden(BE_OrdenCompra oBEOrden)
+        {
+            return oMPPOrdenCompra.EliminarOrden(oBEOrden);
+        }
+
 
     }
 }

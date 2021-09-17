@@ -21,7 +21,6 @@ namespace BE
         #region Propiedades
         public int Codigo { get => _codigo; set => _codigo = value; }
         public DateTime Fecha { get => _fecha; set => _fecha = value; }
-
         public BE_Personal Personal { get => _personal; set => _personal = value; } //RELACION 1 A 1
         public BE_Proveedor Proveedor { get => _proveedor; set => _proveedor = value; }//RELACION 1 A 1
         public List<BE_DetalleCompra> LstItems { get => _lstItems; set => _lstItems = value; }//RELACION 1 A MUCHOS
@@ -31,10 +30,9 @@ namespace BE
         public BE_OrdenCompra()
        {
            _lstItems = new List<BE_DetalleCompra>();
+       
   
        }
-   
-
     }
 
 }
