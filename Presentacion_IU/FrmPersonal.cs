@@ -9,32 +9,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio_BLL;
 using BE;
+using BE.Vistas;
 using Microsoft.VisualBasic;
 namespace Presentacion_IU
 {
  
     public partial class FrmPersonal : Form
-    {
-       
+    {     
         BE_Personal oPersonal;
         BLL_Personal oBLLPersonal;
+        VistaPersonal oVista;
         public FrmPersonal()
         {
             InitializeComponent();
 
             oBLLPersonal = new BLL_Personal();
+            oVista = new VistaPersonal();
           
         }
-      
         private void FrmPersonal_Load(object sender, EventArgs e)
         {
             CargaCombo();
-            MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodoTable());
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-           Test _negocioT = new Test();
-           MessageBox.Show ( _negocioT.TestConection());
+            MostrarGrilla(dtgPersonal, oVista.CargarGridVista(oBLLPersonal.ListarTodo()));
         }
         private void CargaCombo() 
         {
@@ -42,15 +38,6 @@ namespace Presentacion_IU
             cbxTipoEmpleado.Items.Add("Mostrador");
             cbxTipoEmpleado.Items.Add("Fabrica");
             cbxTipoEmpleado.SelectedIndex = 0;
-        }
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-            CreoTipoEmpleado();
-            LLenarObjeto();
-            oBLLPersonal.Guardar(oPersonal);
-            LimpiarCampos();
-            MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodoTable());
         }
         private void CreoTipoEmpleado() 
         {
@@ -89,68 +76,115 @@ namespace Presentacion_IU
         {
             pGrid.DataSource = null;
             pGrid.DataSource = obj;
+            pGrid.AutoResizeColumns();
+            pGrid.AllowUserToResizeColumns = false;
+            pGrid.AllowUserToResizeRows = false;
         }
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if(dtgPersonal.SelectedRows.Count > 0)
+            try
             {
-                CreoTipoEmpleado();
-                LLenarObjeto();
-
-                if (oBLLPersonal.Guardar(oPersonal))
+                if (tbxApellido.Text.Length > 0 || tbxNombre.Text.Length > 0 || tbxDocumento.Text.Length > 0 || cbxTipoEmpleado.SelectedItem == null)
                 {
-                    MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                    CreoTipoEmpleado();
+                    LLenarObjeto();
+                    if (oBLLPersonal.Guardar(oPersonal))
+                    {
+                        MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    LimpiarCampos();
+                    MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodo());
                 }
-                LimpiarCampos();
-                MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodoTable());
+                else
+                {
+                    MessageBox.Show("Por Favor Ingrese todos los datos!", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Por Favor seleccione un personal a modificar", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                throw ex;
             }
-           
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (tbxNroEmpleado.Text.Length > 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Desea ELIMINAR el Personal Nº" + tbxNroEmpleado.Text + "?", "Eliminar", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        CreoTipoEmpleado();
+                        LLenarObjeto();
 
+                        oBLLPersonal.Baja(oPersonal);
+                        MostrarGrilla(dtgPersonal, oBLLPersonal.ListarTodo());
+                        MessageBox.Show("Personal Eliminado Correctamente", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un personal para eliminar", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }   
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimpiarCampos();
         }
         private void dtgPersonal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            LimpiarCampos();
-            DataRowView _Filaseleccion = dtgPersonal.SelectedRows[0].DataBoundItem as DataRowView;
-            if (_Filaseleccion != null) 
+            try
             {
-                tbxNroEmpleado.Text = _Filaseleccion.Row[0].ToString();
-                tbxApellido.Text = _Filaseleccion.Row[1].ToString();
-                tbxNombre.Text = _Filaseleccion.Row[2].ToString();
-                tbxDocumento.Text = _Filaseleccion.Row[3].ToString();
-                cbxTipoEmpleado.Text = _Filaseleccion.Row[4].ToString();
+                LimpiarCampos();
+                VistaPersonal _Filaseleccion = dtgPersonal.SelectedRows[0].DataBoundItem as VistaPersonal;
+
+                if (_Filaseleccion != null)
+                {
+                    tbxNroEmpleado.Text = _Filaseleccion.Codigo.ToString();
+                    tbxApellido.Text = _Filaseleccion.Apellido;
+                    tbxNombre.Text = _Filaseleccion.Nombre;
+                    tbxDocumento.Text = _Filaseleccion.Documento.ToString();
+                    cbxTipoEmpleado.Text = _Filaseleccion.Rol;
+                }
+                else
+                {
+                    MessageBox.Show("Por Favor Seleccione una Fila", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Por Favor Seleccione una Fila", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }         
+                throw ex;
+            }
         }
         private void BtnGenerarPass_Click(object sender, EventArgs e)
         {
-            using (FrmPassword oFrmPassword = new FrmPassword())
-            {           
-                oFrmPassword.CodigoPersonal = int.Parse(tbxNroEmpleado.Text);
-
-                DialogResult dr = oFrmPassword.ShowDialog();
-                if (dr == DialogResult.OK)
+            try
+            {
+                using (FrmPassword oFrmPassword = new FrmPassword())
                 {
-
-
-                  //GUARDAR
+                    if (tbxNroEmpleado.Text.Length > 0)
+                    {
+                        oFrmPassword.CodigoPersonal = int.Parse(tbxNroEmpleado.Text);
+                        DialogResult dr = oFrmPassword.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Primero seleccione el Personal requerido", "Contrasenas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
         }
+
     }
 }

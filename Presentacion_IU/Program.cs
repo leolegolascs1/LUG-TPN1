@@ -16,7 +16,7 @@ namespace Presentacion_IU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPersonal());
+            Application.Run(new FrmGenerarOrdenCompra());
         }
     }
 }

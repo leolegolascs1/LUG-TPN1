@@ -14,21 +14,20 @@ namespace MPP
         Acceso oDatos;
         public bool Baja(BE_Proveedor Objeto)
         {
-            throw new NotImplementedException();
+            string Consulta_SQL;
+            Consulta_SQL = "DELETE From TbProveedores WHERE NroProveedor= " + Objeto.Codigo + "";
+            return oDatos.Escribir(Consulta_SQL);
         }
         public bool Guardar(BE_Proveedor pOproveedor)
         {
             string Consulta_SQL;
             if (pOproveedor.Codigo != 0) //Si tengo codigo es un updata
             {
-                Consulta_SQL = "Update TbProveedores SET Nombre = '" + pOproveedor.Nombre + "', Apellido = '" + pOproveedor.Apellido + "', RazonSocial = '" + pOproveedor.RazonSocial  + "', CUIT ='" + pOproveedor.CUIT  + "', CUIL ='" + pOproveedor.CUIL + "', Email ='" + pOproveedor.EMail + "', Telefono ='" + pOproveedor.Telefono + "', Localidad ='" + pOproveedor.Localidad  + "' , Direccion ='" + pOproveedor.Direccion + "' where NroProveedor=" + pOproveedor.Codigo + "";
-                // string COnsulta_SQL2= string.Format("update Alumno set Nombre = '{0}', Apellido = '{1}', DNI = {2} , FechaNac = '{3}', CodLocalidad = {4} where Codigo = {5}", oAlu.Nombre, oAlu.Apellido,oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo, oAlu.Codigo);
+                Consulta_SQL = "Update TbProveedores SET Nombre = '" + pOproveedor.Nombre + "', Apellido = '" + pOproveedor.Apellido + "', RazonSocial = '" + pOproveedor.RazonSocial  + "', CUIT ='" + pOproveedor.CUIT  + "', Email ='" + pOproveedor.EMail + "', Telefono ='" + pOproveedor.Telefono + "', Localidad ='" + pOproveedor.Localidad  + "' , Direccion ='" + pOproveedor.Direccion + "' where NroProveedor=" + pOproveedor.Codigo + "";
             }
             else //Sino es un insert.
             {
-                Consulta_SQL = "Insert INTO TbProveedores(Nombre,Apellido,RazonSocial,CUIT,CUIL,Email,Telefono,Localidad,Direccion ) values('" + pOproveedor.Nombre + "', '" + pOproveedor.Apellido + "', '" + pOproveedor.RazonSocial + "','" + pOproveedor.CUIT + "','" + pOproveedor.CUIL  + "','" + pOproveedor.EMail  + "','" + pOproveedor.Telefono + "','" + pOproveedor.Localidad  + "','" + pOproveedor.Direccion + "')";
-                //opcion 2
-                // string Consulta_SQL = string.Format("Insert into Alumno(Nombre, Apellido,DNI, FechaNac,CodLocalidad) values ('{0}','{1}',{2},'{3}',{4})", oAlu.Nombre,oAlu.Apellido, oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo);
+                Consulta_SQL = "Insert INTO TbProveedores(Nombre,Apellido,RazonSocial,CUIT,CUIL,Email,Telefono,Localidad,Direccion ) values('" + pOproveedor.Nombre + "', '" + pOproveedor.Apellido + "', '" + pOproveedor.RazonSocial + "','" + pOproveedor.CUIT + "','" + pOproveedor.EMail  + "','" + pOproveedor.Telefono + "','" + pOproveedor.Localidad  + "','" + pOproveedor.Direccion + "')";
             }
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
@@ -37,7 +36,6 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
-
         public List<BE_Proveedor> ListarTodo()
         {
             List<BE_Proveedor> Lista = new List<BE_Proveedor>();
@@ -59,7 +57,6 @@ namespace MPP
                     oBEProveedor.Apellido = (fila["Apellido"].ToString());
                     oBEProveedor.RazonSocial = (fila["RazonSocial"].ToString());
                     oBEProveedor.CUIT = (fila["CUIT"].ToString());
-                    oBEProveedor.CUIL = (fila["CUIL"].ToString());
                     oBEProveedor.Localidad = (fila["Localidad"].ToString());
                     oBEProveedor.Direccion = (fila["Direccion"].ToString());
                     oBEProveedor.EMail = (fila["EMail"].ToString());

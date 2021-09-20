@@ -16,16 +16,13 @@ namespace DAL
         public string TestConnection()
         {
             oConn.Open();
-            //si no uso el metodo Abrir puedo hacer el open 
-            //conexion.Open();
-            //Cerrar();
             if (oConn.State == ConnectionState.Open)
             {
-                return "Conexion a la BD OK";
+                return "Conexion OK";
             }
             else
             {
-                return "No se pudo conectar a la BD, que pacho???";
+                return "No se pudo conectar";
             }
         }
         public bool Escribir(string Consulta_SQL)

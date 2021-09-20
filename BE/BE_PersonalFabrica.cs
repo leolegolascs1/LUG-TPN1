@@ -10,7 +10,12 @@ namespace BE
     {
         public BE_PersonalFabrica()  
        {
-            this.Tipo_Personal = "Fabrica";   
-       }
+            this.Tipo_Personal = "Fabrica";
+            CalcularSalario();
+        }
+        public override void CalcularSalario()
+        {
+            this.Salario = this.SueldBasico += 4000;
+        }
     }
 }

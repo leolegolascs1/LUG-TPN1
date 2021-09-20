@@ -49,5 +49,17 @@ namespace Presentacion_IU
         {
             Application.Exit();
         }
+
+        private void generalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInformesGenerales oFrmInformes = new FrmInformesGenerales();
+            oFrmInformes.MdiParent = this;
+            oFrmInformes.Show();
+        }
+
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

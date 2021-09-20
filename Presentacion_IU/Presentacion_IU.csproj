@@ -59,6 +59,12 @@
     <Compile Include="FrmGenerarOrdenCompra.Designer.cs">
       <DependentUpon>FrmGenerarOrdenCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInformesGenerales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInformesGenerales.Designer.cs">
+      <DependentUpon>FrmInformesGenerales.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGenerarOrdenCompra.resx">
       <DependentUpon>FrmGenerarOrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInformesGenerales.resx">
+      <DependentUpon>FrmInformesGenerales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BE_DetalleCompra.cs" />
     <Compile Include="BE_Login.cs" />
     <Compile Include="BE_Materiales.cs" />
     <Compile Include="BE_OrdenCompra.cs" />
@@ -51,6 +50,8 @@
     <Compile Include="BE_PersonalMostrador.cs" />
     <Compile Include="BE_Proveedor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vistas\VistaItemOrden.cs" />
+    <Compile Include="Vistas\VistaPersonal.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abstraccion\Abstraccion.csproj">

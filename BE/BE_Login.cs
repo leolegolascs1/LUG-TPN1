@@ -16,8 +16,5 @@ namespace BE
         public string Usuario { get => _usuario; set => _usuario = value; }
         public string Contrasenia { get => _contrasenia; set => _contrasenia = value; }
         #endregion
-
-
-
     }
 }

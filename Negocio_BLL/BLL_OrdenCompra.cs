@@ -21,21 +21,17 @@ namespace Negocio_BLL
         {
             return oMPPOrdenCompra.Guardar(oBEOrdenCompra);
         }
-        public DataTable ListarTodoTable()
-        {
-            return oMPPOrdenCompra.ListarTodoTable();
-        }
         public List<BE_OrdenCompra> ListarTodo()
         {
             return oMPPOrdenCompra.ListarTodo();
         }
-        public bool Guardar(BE_DetalleCompra oBEDetalleCompra)
+        public bool AgregarItemCompra(BE_OrdenCompra oBEOrdenCompra , BE_Materiales oBEMaterial, int pCantidad )
         {
-            return oMPPOrdenCompra.Guardar(oBEDetalleCompra);
+            return oMPPOrdenCompra.AgregarItemCompra(oBEOrdenCompra,oBEMaterial,pCantidad);
         }
-        public bool QuitarQuitarItem_Orden(BE_OrdenCompra oBEOrden, BE_DetalleCompra oBEDetalle)
+        public bool QuitarItemCompra(BE_OrdenCompra oBEOrdenCompra, BE_Materiales oBEMaterial)
         {
-            return oMPPOrdenCompra.QuitarItem_Orden(oBEOrden, oBEDetalle);
+            return oMPPOrdenCompra.QuitarItemCompra(oBEOrdenCompra, oBEMaterial);
         }
         public bool EliminarOrden(BE_OrdenCompra oBEOrden)
         {

@@ -37,6 +37,7 @@
             this.lblConfirma = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbxNuevoRepite
@@ -44,28 +45,32 @@
             this.tbxNuevoRepite.Location = new System.Drawing.Point(104, 148);
             this.tbxNuevoRepite.Name = "tbxNuevoRepite";
             this.tbxNuevoRepite.Size = new System.Drawing.Size(163, 20);
-            this.tbxNuevoRepite.TabIndex = 0;
+            this.tbxNuevoRepite.TabIndex = 2;
+            this.tbxNuevoRepite.UseSystemPasswordChar = true;
             // 
             // tbxNuevo
             // 
             this.tbxNuevo.Location = new System.Drawing.Point(104, 109);
             this.tbxNuevo.Name = "tbxNuevo";
             this.tbxNuevo.Size = new System.Drawing.Size(163, 20);
-            this.tbxNuevo.TabIndex = 0;
+            this.tbxNuevo.TabIndex = 1;
+            this.tbxNuevo.UseSystemPasswordChar = true;
             // 
             // tbxActual
             // 
+            this.tbxActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.tbxActual.Location = new System.Drawing.Point(104, 56);
             this.tbxActual.Name = "tbxActual";
             this.tbxActual.Size = new System.Drawing.Size(163, 20);
             this.tbxActual.TabIndex = 0;
+            this.tbxActual.UseSystemPasswordChar = true;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(93, 195);
+            this.btnGuardar.Location = new System.Drawing.Point(49, 195);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 1;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
@@ -109,18 +114,30 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(235, 195);
+            this.btnCancelar.Location = new System.Drawing.Point(155, 195);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(271, 195);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 5;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FrmPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 230);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblConfirma);
             this.Controls.Add(this.lblActual);
@@ -131,7 +148,7 @@
             this.Controls.Add(this.tbxNuevo);
             this.Controls.Add(this.tbxNuevoRepite);
             this.Name = "FrmPassword";
-            this.Text = "FrmPassword";
+            this.Text = "Formulario Password";
             this.Load += new System.EventHandler(this.FrmPassword_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,5 +166,6 @@
         private System.Windows.Forms.Label lblConfirma;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

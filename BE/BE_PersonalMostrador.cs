@@ -11,6 +11,11 @@ namespace BE
         public BE_PersonalMostrador()
         {
             this.Tipo_Personal = "Mostrador";
+            CalcularSalario();
+        }
+        public override void CalcularSalario()
+        {
+            this.Salario = this.SueldBasico += 3000;
         }
     }
 }

@@ -27,6 +27,9 @@ namespace Negocio_BLL
         {
             return oMPPMaterial.ListarTodo();
         }
-
+        public bool Baja(BE_Materiales oBEMaterial)
+        {
+            return oMPPMaterial .Baja(oBEMaterial);
+        }
     }
 }

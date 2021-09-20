@@ -14,7 +14,7 @@ namespace BE
         private DateTime _fecha;
         private int _nroPersonal;
         private int _nroProveedor;
-        private List<BE_DetalleCompra> _lstItems;
+        private List<BE_Materiales> _lstItems;
         private BE_Personal _personal;
         private BE_Proveedor _proveedor;
         #endregion
@@ -23,16 +23,17 @@ namespace BE
         public DateTime Fecha { get => _fecha; set => _fecha = value; }
         public BE_Personal Personal { get => _personal; set => _personal = value; } //RELACION 1 A 1
         public BE_Proveedor Proveedor { get => _proveedor; set => _proveedor = value; }//RELACION 1 A 1
-        public List<BE_DetalleCompra> LstItems { get => _lstItems; set => _lstItems = value; }//RELACION 1 A MUCHOS
+        public List<BE_Materiales> LstItems { get => _lstItems; set => _lstItems = value; }//RELACION 1 A MUCHOS
         public int NroPersonal { get => _nroPersonal; set => _nroPersonal = value; }
         public int NroProveedor { get => _nroProveedor; set => _nroProveedor = value; }
         #endregion
+        #region Metodos
         public BE_OrdenCompra()
-       {
-           _lstItems = new List<BE_DetalleCompra>();
-       
-  
-       }
+        {
+            _lstItems = new List<BE_Materiales>();
+        }
+        #endregion
+
     }
 
 }

@@ -14,22 +14,31 @@ namespace MPP
         Acceso oDatos;
         public bool Baja(BE_Personal Objeto)
         {
-            throw new NotImplementedException();
+            string Consulta_SQL;
+            Consulta_SQL = "DELETE From TbPersonal WHERE NroPersonal= " + Objeto.Codigo + "";
+            return oDatos.Escribir(Consulta_SQL);       
         }
         public bool Guardar(BE_Personal pOPersonal)
         {
             string Consulta_SQL;
             if (pOPersonal.Codigo != 0) //Si tengo codigo es un updata
             {
-                Consulta_SQL = "Update TbPersonal SET Nombre = '" + pOPersonal.Nombre + "', Apellido = '" + pOPersonal.Apellido + "', Documento = " + pOPersonal.Documento + ", Tipo_Personal ='" + pOPersonal.Tipo_Personal + "' where NroPersonal=" + pOPersonal.Codigo + "";
-                // string COnsulta_SQL2= string.Format("update Alumno set Nombre = '{0}', Apellido = '{1}', DNI = {2} , FechaNac = '{3}', CodLocalidad = {4} where Codigo = {5}", oAlu.Nombre, oAlu.Apellido,oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo, oAlu.Codigo);
+                Consulta_SQL = "Update TbPersonal SET Nombre = '" + pOPersonal.Nombre + "', Apellido = '" + pOPersonal.Apellido + "', Documento = " + pOPersonal.Documento + ", Rol ='" + pOPersonal.Tipo_Personal + "' where NroPersonal=" + pOPersonal.Codigo + "";
+            
             }
             else //Sino es un insert.
             {
-                Consulta_SQL = "Insert INTO TbPersonal (Nombre, Apellido,Documento, Tipo_Personal) values('" + pOPersonal.Nombre + "', '" + pOPersonal.Apellido + "', " + pOPersonal.Documento + ",'" + pOPersonal.Tipo_Personal + "')";
-                //opcion 2
-                // string Consulta_SQL = string.Format("Insert into Alumno(Nombre, Apellido,DNI, FechaNac,CodLocalidad) values ('{0}','{1}',{2},'{3}',{4})", oAlu.Nombre,oAlu.Apellido, oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo);
+                Consulta_SQL = "Insert INTO TbPersonal (Nombre, Apellido,Documento, Rol) values('" + pOPersonal.Nombre + "', '" + pOPersonal.Apellido + "', " + pOPersonal.Documento + ",'" + pOPersonal.Tipo_Personal + "')";               
             }
+            oDatos = new Acceso();
+            return oDatos.Escribir(Consulta_SQL);
+        }
+        public bool GuardarPassword(string pPassword, int pNroPersonal)
+        {
+            string Consulta_SQL;
+        
+                Consulta_SQL = "Update TbPersonal SET Password='" + pPassword  + "' where NroPersonal=" + pNroPersonal  + "";
+  
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
         }
@@ -61,20 +70,20 @@ namespace MPP
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    string tipoPersonal = fila["Tipo_Personal"].ToString();
+                    string Rol = fila["Rol"].ToString();
                     BE_Personal oPersonal;
-                    if (tipoPersonal == "Mostrador")
+                    if (Rol == "Mostrador")
                     {
                         oPersonal = new BE_PersonalMostrador();
                         ListaPersonal.Add(CargarDatos(oPersonal,fila));
                     }
-                    else if (tipoPersonal == "Fabrica")
+                    else if (Rol == "Fabrica")
                     {
                         oPersonal = new BE_PersonalFabrica();
                         ListaPersonal.Add(CargarDatos(oPersonal, fila));
 
                     }
-                    else if (tipoPersonal == "Administrador")
+                    else if (Rol == "Administrador")
                     {
                         oPersonal = new BE_PersonalAdministrador();
                         ListaPersonal.Add(CargarDatos(oPersonal, fila));

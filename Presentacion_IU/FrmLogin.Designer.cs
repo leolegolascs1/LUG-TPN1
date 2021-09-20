@@ -41,17 +41,19 @@
             // 
             // tbxUsuario
             // 
+            this.tbxUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tbxUsuario.Location = new System.Drawing.Point(113, 38);
             this.tbxUsuario.Name = "tbxUsuario";
             this.tbxUsuario.Size = new System.Drawing.Size(168, 20);
-            this.tbxUsuario.TabIndex = 0;
+            this.tbxUsuario.TabIndex = 1;
             // 
             // tbxPassword
             // 
+            this.tbxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tbxPassword.Location = new System.Drawing.Point(113, 64);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.Size = new System.Drawing.Size(168, 20);
-            this.tbxPassword.TabIndex = 0;
+            this.tbxPassword.TabIndex = 2;
             this.tbxPassword.UseSystemPasswordChar = true;
             // 
             // label1
@@ -77,7 +79,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(66, 123);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 33);
-            this.btnAceptar.TabIndex = 2;
+            this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -87,7 +89,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(246, 123);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 33);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -103,7 +105,7 @@
             this.groupBox1.Location = new System.Drawing.Point(23, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(376, 188);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login";
             // 
@@ -126,7 +128,7 @@
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.Text = "Fromulario Longin";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -20,25 +20,21 @@ namespace MPP
             string Consulta_SQL;
             if (POrdenCompra.Codigo != 0) //Si tengo codigo es un updata
             {
-                Consulta_SQL = "Update TbOrdenCompra SET Fecha = '" + POrdenCompra.Fecha + "',NroProveedor="+ POrdenCompra.NroProveedor +", Proveedor= '" + POrdenCompra.Proveedor.ToString()  + "',NroPersonal="+ POrdenCompra.NroPersonal+", Personal = '" + POrdenCompra.Personal.ToString()  + "' where NroOrdenCompra=" + POrdenCompra.Codigo + "";
-                // string COnsulta_SQL2= string.Format("update Alumno set Nombre = '{0}', Apellido = '{1}', DNI = {2} , FechaNac = '{3}', CodLocalidad = {4} where Codigo = {5}", oAlu.Nombre, oAlu.Apellido,oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo, oAlu.Codigo);
+                Consulta_SQL = "Update TbOrdenCompra SET Fecha =convert(datetime, '" + POrdenCompra.Fecha + "', 103) ,NroProveedor=" + POrdenCompra.NroProveedor +", Proveedor= '" + POrdenCompra.Proveedor.ToString()  + "',NroPersonal="+ POrdenCompra.NroPersonal+", Personal = '" + POrdenCompra.Personal.ToString()  + "' where NroOrdenCompra=" + POrdenCompra.Codigo + "";
             }
-           // convert(datetime, campo_fecha, 103)
             else //Sino es un insert.
             {
-                Consulta_SQL = "Insert INTO TbOrdenCompra (Fecha,NroProveedor,Proveedor,NroPersonal, Personal) VALUES ('" + POrdenCompra.Fecha + "'," + POrdenCompra.NroProveedor + ",'" + POrdenCompra.Proveedor.ToString()  + "'," + POrdenCompra.NroPersonal  + ",'" + POrdenCompra.Personal.ToString() +"')";
-                //opcion 2
-                // string Consulta_SQL = string.Format("Insert into Alumno(Nombre, Apellido,DNI, FechaNac,CodLocalidad) values ('{0}','{1}',{2},'{3}',{4})", oAlu.Nombre,oAlu.Apellido, oAlu.DNI,(oAlu.FechaNac).ToString("MM/dd/yyyy"),oAlu.oLocalidad.Codigo);
+                Consulta_SQL = "Insert INTO TbOrdenCompra (Fecha,NroProveedor,Proveedor,NroPersonal, Personal) VALUES (convert(datetime, '" + POrdenCompra.Fecha + "', 103)," + POrdenCompra.NroProveedor + ",'" + POrdenCompra.Proveedor.ToString()  + "'," + POrdenCompra.NroPersonal  + ",'" + POrdenCompra.Personal.ToString() +"')";           
             }
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
         }
-        public bool Guardar(BE_DetalleCompra pDetalle)
+
+        public bool AgregarItemCompra(BE_OrdenCompra pOrden,BE_Materiales pMaterial, int pCantidad) 
         {
             string Consulta_SQL;
-      
-            Consulta_SQL = "Insert INTO TbDetalleCompra(NroOrden,NroItem,Descripcion,Cantidad) VALUES (" + pDetalle.NroOrden  + ", " + pDetalle.NroItem + ",'" + pDetalle.Descripcion  + "',"+ pDetalle.Cantidad +")";
-  
+            Consulta_SQL = "Insert INTO TbDetalleCompra(NroOrden,NroItem,Descripcion,Cantidad) VALUES (" + pOrden.Codigo + ", " + pMaterial .Codigo + ",'" + pMaterial.Descripcion_material + "'," + pCantidad + ")";
+
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
         }
@@ -112,7 +108,6 @@ namespace MPP
                         oProveedor.Nombre = (row["Nombre"].ToString());
                         oProveedor.RazonSocial =(row["RazonSocial"].ToString());
                         oProveedor.CUIT = (row["CUIT"].ToString());
-                        oProveedor.CUIL  = (row["CUIL"].ToString());
                         oProveedor.EMail = (row["Email"].ToString());
                         oProveedor.Telefono = (row["Telefono"].ToString());
                         oProveedor.Localidad  = (row["Localidad"].ToString());
@@ -127,21 +122,19 @@ namespace MPP
                     oDatos3 = new Acceso();
                     Ds3 = oDatos3.Leer2(Consulta3);
 
-                    List<BE_DetalleCompra> listaDetalle = new List<BE_DetalleCompra>(); //Creo Lista detalles
+                    List<BE_Materiales> listaDetalle = new List<BE_Materiales>(); //Creo Lista detalles
 
                     if (Ds3.Tables[0].Rows.Count > 0)
                     {
                         foreach (DataRow item in Ds3.Tables[0].Rows) //Recorro
                         { 
-                            BE_DetalleCompra oBEDetalleCompra = new BE_DetalleCompra(); //Creo objeto y cargo datos.
+                            BE_Materiales oBEMateriales = new BE_Materiales(); //Creo objeto y cargo datos.
 
-                            oBEDetalleCompra.Codigo = int.Parse(item["IdDetalle"].ToString());
-                            oBEDetalleCompra.NroOrden = int.Parse(item["NroOrden"].ToString());
-                            oBEDetalleCompra.NroItem = int.Parse(item["NroItem"].ToString());
-                            oBEDetalleCompra.Descripcion = (item["Descripcion"].ToString());
-                            oBEDetalleCompra.Cantidad = int.Parse(item["Cantidad"].ToString());
+                            oBEMateriales.Codigo = int.Parse(item["NroItem"].ToString());
+                            oBEMateriales.Descripcion_material = (item["Descripcion"].ToString());
+                            oBEMateriales.Cantidad = int.Parse(item["Cantidad"].ToString());
 
-                            listaDetalle.Add(oBEDetalleCompra); //Agrego a la lista detalles
+                            listaDetalle.Add(oBEMateriales); //Agrego a la lista detalles
                         }
                         oBEOrdenCompra.LstItems = listaDetalle; //Asigno la lista a la orden de compra.
                     }
@@ -159,9 +152,9 @@ namespace MPP
         {
             throw new NotImplementedException();
         }
-        public bool QuitarItem_Orden(BE_OrdenCompra oBEOrden, BE_DetalleCompra oBEDetalle)
+        public bool QuitarItemCompra(BE_OrdenCompra oBEOrdenCompra, BE_Materiales oBEMateriales)
         {
-            string Consulta = " Delete from TbDetalleCompra where NroOrden = " + oBEOrden.Codigo + "  and IdDetalle =" + oBEDetalle.Codigo + "";
+            string Consulta = " Delete from TbDetalleCompra where NroOrden = " + oBEOrdenCompra.Codigo + "  and NroItem =" + oBEMateriales.Codigo + "";
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta);
         }
@@ -173,14 +166,12 @@ namespace MPP
             oDatos = new Acceso();
             estado = oDatos.Escribir(Consulta);
 
-            foreach (BE_DetalleCompra item in oBEOrden.LstItems)
+            foreach (BE_Materiales item in oBEOrden.LstItems)
             {
-                string Consulta2 = "Delete from TbDetalleCompra where IdDetalle = " + item.Codigo + "";
+                string Consulta2 = "Delete from TbDetalleCompra where NroItem = " + item.Codigo + "";
                 estado = oDatos.Escribir(Consulta2);
             }
             return estado;
-
-       
         }
 
     }

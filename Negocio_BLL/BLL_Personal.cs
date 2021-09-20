@@ -20,7 +20,14 @@ namespace Negocio_BLL
         {
             return oMPPPersonal.Guardar(oBEPersonal);
         }
-
+        public bool Guardar(string pPassword, int pNroEmpleado)
+        {
+            return oMPPPersonal.GuardarPassword(pPassword,pNroEmpleado);
+        }
+        public bool Baja(BE_Personal oBEPersonal)
+        {
+            return oMPPPersonal.Baja(oBEPersonal);
+        }
         public DataTable ListarTodoTable()
         {
             return oMPPPersonal.ListarTodoTable();
@@ -29,6 +36,7 @@ namespace Negocio_BLL
         {
             return oMPPPersonal.ListarTodo();
         }
+
 
     }
 }

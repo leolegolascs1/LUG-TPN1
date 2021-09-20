@@ -23,11 +23,14 @@ namespace Negocio_BLL
         public DataTable ListarTodoTable()
         {
             return oMPP_Proveedor.ListarTodoTable();
-
         }
         public List<BE_Proveedor> ListarTodo()
         {
             return oMPP_Proveedor.ListarTodo();
+        }
+        public bool Baja(BE_Proveedor pOProveedor)
+        {
+            return oMPP_Proveedor.Baja(pOProveedor);
         }
     }
 }

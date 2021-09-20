@@ -15,7 +15,6 @@ namespace BE
         private string _apellido;
         private string _razonSocial;
         private string _cUIT;
-        private string _cUIL;
         private string _eMail;
         private string _telefono;
         private string _localidad;
@@ -28,12 +27,16 @@ namespace BE
         public string Apellido { get => _apellido; set => _apellido = value; }
         public string RazonSocial { get => _razonSocial; set => _razonSocial = value; }
         public string CUIT { get => _cUIT; set => _cUIT = value; }
-        public string CUIL { get => _cUIL; set => _cUIL = value; }
         public string EMail { get => _eMail; set => _eMail = value; }
         public string Telefono { get => _telefono; set => _telefono = value; }
         public string Localidad { get => _localidad; set => _localidad = value; }
         public string Direccion { get => _direccion; set => _direccion = value; }
         #endregion
+        public BE_Proveedor() { }
+        public BE_Proveedor(int pCodigo) 
+        {
+            this.Codigo = pCodigo;       
+        }
         public override string ToString()
         {
             return this.RazonSocial;
